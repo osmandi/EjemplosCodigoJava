@@ -181,6 +181,65 @@ public class Actividad2 {
 
     public static void supuesto2(){
         System.out.println("Soy el supuesto 2");
+        System.out.println("Debes ingresar los datos de 3 alumnos");
+        // Tener clase alumno de la actividad 1
+        // Instanciar 3 alumnos
+        Alumnos[] alumnos = new Alumnos[3];
+        alumnos[0] = new Alumnos();
+        alumnos[1] = new Alumnos();
+        alumnos[2] = new Alumnos();
+        sc_2 = new Scanner(System.in);
+        int nAlumnos = 0;
+        
+        
+        for (Alumnos j : alumnos){
+            nAlumnos++;
+            System.out.println("|||||||||||||||||||||||||||||");
+            
+            System.out.println("Ingrese el nombre del alumno " + nAlumnos);
+            j.setNombre(sc_2.nextLine());
+            
+            System.out.println("Ingrese el DNI del alumno "+ nAlumnos);
+            j.setNif(sc_2.nextInt());
+            sc_2.nextLine(); // Limpiar el scanner
+            System.out.println("Ingrese el Apellido del alumno " + nAlumnos);
+            j.setApellido(sc_2.nextLine());
+            
+            System.out.println("Ingrese la dirección del alumno "+ nAlumnos);
+            j.setDirección(sc_2.nextLine());
+
+            System.out.println("Ingrese la población del alumno "+ nAlumnos);
+            j.setPoblación(sc_2.nextLine());
+
+            System.out.println("Ingrese la matrícula del alumno "+ nAlumnos);
+            j.setMatrícula(sc_2.nextLine());            
+                 
+        }
+        //Osmandi José Pedro        
+        
+        // Ordear al array por el apallido
+        Alumnos alumnoAuxiliar;
+        for (int i = 0 ; i <alumnos.length-1;i++){
+            for(int j = i+1; j < alumnos.length;j++){
+                int comparacion = alumnos[i].getApellido().compareToIgnoreCase(alumnos[j].getApellido());
+                
+                if(comparacion >0){
+                    // i < j
+                    alumnoAuxiliar = alumnos[i];
+                    alumnos[i] = alumnos[j];
+                    alumnos[j] = alumnoAuxiliar;
+                }
+            }
+        }
+        
+        // Mostar los alumnos ingresados
+        System.out.println("Los apellidos ordenados son:");
+        for(Alumnos i : alumnos){
+            System.out.println(i.getApellido() +  " " + i.getNombre());
+        }
+        
+        System.out.println("Termina el supuesto 1");
+        System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°"); 
     }
 
     public static void supuesto3(){
