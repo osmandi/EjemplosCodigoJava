@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+
 
 /*
   Supuesto1: Realiza un programa que permita números enteros por teclado
@@ -48,6 +50,11 @@ import java.util.Scanner;
 public class Actividad2 {
 
     public static Scanner sc;
+    public static Scanner sc_1;
+    public static Scanner sc_2;
+    public static Scanner sc_3;
+    public static Scanner sc_4;
+    
     public static Boolean ejecucion=true;
     public static int supuesto;
 
@@ -84,6 +91,9 @@ public class Actividad2 {
                     case 4:
                         supuesto4();
                         break;
+                    case 0:
+                        System.exit(0);
+                        break;
 
                     default:
                         //throw new AssertionError();
@@ -109,6 +119,64 @@ public class Actividad2 {
     // Funciones de cada supuesto
     public static void supuesto1(){
         System.out.println("Soy el supuesto 1");
+        //Creación de una lista donde se guardarán todos los números ingresados
+        ArrayList<Integer> numerosIngresados = new ArrayList<Integer>();
+        
+        // Instancia del teclado
+        sc_1 = new Scanner(System.in);       
+        
+        // Inicio del contador límite
+        int nTotal = 0;
+        while(nTotal < 20){
+            System.out.println("Ingresa un número entero");        
+            
+            if(sc_1.hasNextInt()){
+                // Si es un número lo añade al ArrayList
+                numerosIngresados.add(sc_1.nextInt());
+                
+                // Verificar si hay más de dos valores en el ArrayList
+                if(numerosIngresados.size() >= 2){
+                    // Obtener los dos últimos índices
+                    int ultimoIndice = numerosIngresados.size()-1;
+                    int penultimoIndice = numerosIngresados.size()-2;
+                    
+                    // Obtener el valor de los dos últimos índices
+                    int ultimoValor = numerosIngresados.get(ultimoIndice);
+                    int penultimoValor = numerosIngresados.get(penultimoIndice);
+                    
+                    // Sumar los dos últimos valores del ArrayList
+                    nTotal = ultimoValor + penultimoValor;
+                }
+                
+            }else{
+                // Si no es un número envía no guarda nada
+                System.out.println("¡Debe ser un número entero!");
+                
+            }
+            
+            // Limpiear el Scanner
+            sc_1.nextLine();
+        }
+        
+        // Detectar cuántos pares e impares fueron ingresados        
+        int numerosPares = 0;
+        int numerosImpares = 0;
+        for(Integer i : numerosIngresados){
+            if(i%2==0){
+                // Es un número par
+                numerosPares++;
+            }else{
+                // Es un número impar
+                numerosImpares++;
+            }
+            
+        }
+        
+        // Mensajes de salida
+        System.out.println("Números impares: " + numerosImpares);
+        System.out.println("Números pares: " + numerosPares);
+        System.out.println("Los dos últimos números dan: " + nTotal);
+        
     }
 
     public static void supuesto2(){
