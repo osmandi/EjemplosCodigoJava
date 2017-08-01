@@ -243,7 +243,43 @@ public class Actividad2 {
     }
 
     public static void supuesto3(){
+        
         System.out.println("Soy el supuesto 3");
+        
+        // Considero que haciendo un Array en vez de una
+        // cadena de caracteres es más productivo
+        
+        sc_3 = new Scanner(System.in);        
+        String[] palabras = new String[30];
+        int palabrasConS = 0;
+        
+        
+        String palabraConMasVocales;
+        int contadorPalabrasConVocal = 0;
+        int contadorPalabrasConVocalAuxiliar;
+       
+        // Almacenar palabras
+        for(int i = 0; i < 30 ; i++){
+            System.out.println("Ingresa palabra n° " + i);
+            palabras[i] = sc_3.nextLine();
+        }
+        
+            
+        for(String i : palabras){
+            System.out.println("Imprime palabra: " +i);
+            contadorPalabrasConVocalAuxiliar = 0;
+            
+            // Contador de palabras con S
+            if(i.contains("s")){                
+                palabrasConS++;
+            }
+            
+            
+            // Definición de palabra con más vocales
+            
+        }
+        
+        System.out.println("El total de palabras con s fueron: " +palabrasConS);
     }
 
     public static void supuesto4(){
